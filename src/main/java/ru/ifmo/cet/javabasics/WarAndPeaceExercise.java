@@ -9,14 +9,14 @@ import java.io.File;
 public class WarAndPeaceExercise {
 
     public static String warAndPeace() throws IOException {
-//считывание в мапу
+//reading on map
         Scanner in = new Scanner(new File("src/main/resources/WAP12.txt"));
         HashMap<String,Integer> vocabulary= new HashMap<>();
         readWords(in, vocabulary);
         in = new Scanner(new File("src/main/resources/WAP34.txt"));
         readWords(in, vocabulary);
-//удаление слов<10
-        Iterator<HashMap.Entry<String, Integer>> it;//use only next for
+//delete words<10
+        Iterator<HashMap.Entry<String, Integer>> it;//using only next for
         for(it=vocabulary.entrySet().iterator();it.hasNext();) {
             HashMap.Entry<String, Integer> entry = it.next();
             if (entry.getValue() < 10) {

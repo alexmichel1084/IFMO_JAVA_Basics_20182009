@@ -1,13 +1,8 @@
 package ru.ifmo.cet.javabasics;
-
 import java.io.IOException;
 import java.util.*;
 import java.io.File;
-
-
-
 public class WarAndPeaceExercise {
-
     public static String warAndPeace() throws IOException {
 //reading on map
         Scanner in = new Scanner(new File("src/main/resources/WAP12.txt"));
@@ -59,7 +54,6 @@ public class WarAndPeaceExercise {
                     vocabulary.put(word,++value);
                 }
             }
-
         }
     }
 }

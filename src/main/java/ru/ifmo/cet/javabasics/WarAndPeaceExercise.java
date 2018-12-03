@@ -16,8 +16,8 @@ public class WarAndPeaceExercise {
         in = new Scanner(new File("src/main/resources/WAP34.txt"));
         readWords(in, vocabulary);
 //удаление слов<10
-
-        for(Iterator<HashMap.Entry<String, Integer>> it=vocabulary.entrySet().iterator();it.hasNext();) {
+        Iterator<HashMap.Entry<String, Integer>> it;//use only next for
+        for(it=vocabulary.entrySet().iterator();it.hasNext();) {
             HashMap.Entry<String, Integer> entry = it.next();
             if (entry.getValue() < 10) {
                 it.remove();
@@ -59,6 +59,7 @@ public class WarAndPeaceExercise {
                     vocabulary.put(word,++value);
                 }
             }
+
         }
     }
 }

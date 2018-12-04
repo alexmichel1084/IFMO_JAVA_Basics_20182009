@@ -34,11 +34,11 @@ public class WarAndPeaceExercise {
             res_array.add(string);
             vocabulary.remove(max.getKey());
         }
-
         String res_string="";
         for(String s:res_array) {
             res_string+=s+"\n";
         }
+        if(res_string.length()!=0)
         res_string = res_string.substring(0, res_string.length() - 1);
         return res_string;
     }

@@ -40,7 +40,7 @@ public class WarAndPeaceExercise {
         }
         if(res_string.length()!=0) {
             res_string = res_string.substring(0, res_string.length() - 1);
-        }
+        } else throw new IOException();
         return res_string;
     }
     private static void readWords(Scanner in, HashMap<String, Integer> vocabulary) {

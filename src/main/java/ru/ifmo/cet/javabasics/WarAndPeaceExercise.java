@@ -10,6 +10,7 @@ public class WarAndPeaceExercise {
         readWords(in, vocabulary);
         in = new Scanner(new File("src/main/resources/WAP34.txt"));
         readWords(in, vocabulary);
+
 //delete words<10
         Iterator<HashMap.Entry<String, Integer>> it;//using only next for
         for(it=vocabulary.entrySet().iterator();it.hasNext();) {
@@ -18,6 +19,7 @@ public class WarAndPeaceExercise {
                 it.remove();
             }
         }
+        if(vocabulary.isEmpty()) throw new IOException();
         ArrayList<String> res_array= new ArrayList<>();
         while (!vocabulary.isEmpty()){
             HashMap.Entry<String, Integer> max=vocabulary.entrySet().iterator().next();
@@ -38,9 +40,9 @@ public class WarAndPeaceExercise {
         for(String s:res_array) {
             res_string+=s+"\n";
         }
-        if(res_string.length()!=0) {
+
             res_string = res_string.substring(0, res_string.length() - 1);
-        } else throw new IOException();
+
         return res_string;
     }
     private static void readWords(Scanner in, HashMap<String, Integer> vocabulary) {

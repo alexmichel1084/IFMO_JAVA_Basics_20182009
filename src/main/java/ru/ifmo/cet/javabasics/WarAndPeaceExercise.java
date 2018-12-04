@@ -19,7 +19,7 @@ public class WarAndPeaceExercise {
                 it.remove();
             }
         }
-        if(vocabulary.isEmpty()) throw new IOException();
+        if(vocabulary.isEmpty()) throw new UnsupportedOperationException();
         ArrayList<String> res_array= new ArrayList<>();
         while (!vocabulary.isEmpty()){
             HashMap.Entry<String, Integer> max=vocabulary.entrySet().iterator().next();

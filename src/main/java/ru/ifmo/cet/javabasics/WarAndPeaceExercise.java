@@ -6,9 +6,10 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-public class WarAndPeaceExercise {
+public class WarAndPeaceExercise  {
 
     public static String warAndPeace() throws IOException {
+
 //считывание в мапу
         final Path tome12Path = Paths.get("src", "main", "resources", "WAP12.txt");
         final Path tome34Path = Paths.get("src", "main", "resources", "WAP34.txt");
@@ -45,10 +46,8 @@ public class WarAndPeaceExercise {
             for (Map.Entry<String, Integer> pair : vocabulary.entrySet()) {
                 if (max.getValue() < pair.getValue()) {
                     max = pair;
-                } else if (max.getValue().equals(pair.getValue())) {
-                    if (max.getKey().compareTo(pair.getKey()) > 0) {
+                } else if (max.getValue().equals(pair.getValue())&&max.getKey().compareTo(pair.getKey()) > 0) {
                         max = pair;
-                    }
                 }
             }
             String string = max.getKey() + " - " + max.getValue();

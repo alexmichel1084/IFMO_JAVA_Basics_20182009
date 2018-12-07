@@ -1,7 +1,6 @@
 package ru.ifmo.cet.javabasics;
 import java.io.IOException;
 import java.util.*;
-import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -10,8 +9,7 @@ public class WarAndPeaceExercise {
 
     public static String warAndPeace()
             throws IOException {
-        //считывание в мапу
-        final Path tome12Path = Paths.get("src", "main", "resources", "WAP12.txt");
+        final Path tome12Path = Paths.get("src", "main", "resources", "WAP12.txt");//read in map
         final Path tome34Path = Paths.get("src", "main", "resources", "WAP34.txt");
         HashMap < String, Integer > vocabulary = new HashMap < > ();
         final Charset charset = Charset.forName("windows-1251");
@@ -31,9 +29,8 @@ public class WarAndPeaceExercise {
                 }
             }
         }
-        //удаление слов<10
         Iterator < HashMap.Entry < String, Integer >> it;
-        for (it = vocabulary.entrySet().iterator(); it.hasNext();) {
+        for (it = vocabulary.entrySet().iterator(); it.hasNext();) {//delete words<10
             HashMap.Entry < String, Integer > entry = it.next();
             if (entry.getValue() < 10) {
                 it.remove();

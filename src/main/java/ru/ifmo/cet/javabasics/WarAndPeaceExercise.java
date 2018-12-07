@@ -8,8 +8,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 public class WarAndPeaceExercise  {
 
-    public static String warAndPeace() throws IOException {
-
+    public static String warAndPeace()
+            throws IOException {
 //считывание в мапу
         final Path tome12Path = Paths.get("src", "main", "resources", "WAP12.txt");
         final Path tome34Path = Paths.get("src", "main", "resources", "WAP34.txt");

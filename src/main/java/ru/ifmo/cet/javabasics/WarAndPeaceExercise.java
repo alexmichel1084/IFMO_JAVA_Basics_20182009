@@ -9,7 +9,7 @@ public class WarAndPeaceExercise {
 
     public static String warAndPeace()
             throws IOException {
-        final Path tome12Path = Paths.get("src", "main", "resources", "WAP12.txt");//read in map
+        final Path tome12Path = Paths.get("src", "main", "resources", "WAP12.txt");
         final Path tome34Path = Paths.get("src", "main", "resources", "WAP34.txt");
         HashMap < String, Integer > vocabulary = new HashMap < > ();
         final Charset charset = Charset.forName("windows-1251");
@@ -30,7 +30,7 @@ public class WarAndPeaceExercise {
             }
         }
         Iterator < HashMap.Entry < String, Integer >> it;
-        for (it = vocabulary.entrySet().iterator(); it.hasNext();) {//delete words<10
+        for (it = vocabulary.entrySet().iterator(); it.hasNext();) {
             HashMap.Entry < String, Integer > entry = it.next();
             if (entry.getValue() < 10) {
                 it.remove();

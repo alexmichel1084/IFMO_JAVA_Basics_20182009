@@ -23,6 +23,7 @@ public class WarAndPeaceExercise {
                 if (vocabulary.get(word) == null) {
                     vocabulary.put(word, 1);
                 } else {
+
                     vocabulary.put(word, ++count);
                 }
             }

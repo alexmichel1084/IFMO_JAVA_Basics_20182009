@@ -16,9 +16,7 @@ public class WarAndPeaceExercise {
         List < String > strings = Files.readAllLines(tome12Path, charset);
         strings.addAll(Files.readAllLines(tome34Path, charset));
         for (String string: strings) {
-            string = string.toLowerCase();
-            string = string.replaceAll("[^a-z\u0430-\u044f]", " ");
-            String[] words = string.split(" ");
+            String[] words = string.toLowerCase().replaceAll("[^a-z\u0430-\u044f]", " ").split(" ");
             for (String word: words) {
                 if (word.length() < 4) continue;
                 Integer count = vocabulary.get(word);
@@ -29,8 +27,8 @@ public class WarAndPeaceExercise {
                 }
             }
         }
-        Iterator < HashMap.Entry < String, Integer >> it;
-        for (it = vocabulary.entrySet().iterator(); it.hasNext();) {
+
+        for (Iterator < HashMap.Entry < String, Integer >> it = vocabulary.entrySet().iterator(); it.hasNext();) {
             HashMap.Entry < String, Integer > entry = it.next();
             if (entry.getValue() < 10) {
                 it.remove();

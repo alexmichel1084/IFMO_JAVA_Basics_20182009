@@ -1,28 +1,47 @@
 package ru.ifmo.cet.javabasics;
 import java.io.IOException;
 import java.util.*;
-import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 public class WarAndPeaceExercise {
-    public static String warAndPeace() throws IOException {
-//reading on map
-        Scanner in = new Scanner(new File("src/main/resources/WAP12.txt"));
-        HashMap<String,Integer> vocabulary= new HashMap<>();
-        readWords(in, vocabulary);
-        in = new Scanner(new File("src/main/resources/WAP34.txt"));
-        readWords(in, vocabulary);
 
-//delete words<10
-        Iterator<HashMap.Entry<String, Integer>> it;//using only next for
-        for(it=vocabulary.entrySet().iterator();it.hasNext();) {
+    public static String warAndPeace() throws IOException {
+//считывание в мапу
+        final Path tome12Path = Paths.get("src", "main", "resources", "WAP12.txt");
+        final Path tome34Path = Paths.get("src", "main", "resources", "WAP34.txt");
+        HashMap<String, Integer> vocabulary = new HashMap<>();
+        final Charset charset = Charset.forName("windows-1251");
+        List<String> strings = Files.readAllLines(tome12Path, charset);
+        strings.addAll(Files.readAllLines(tome34Path, charset));
+        for (String string : strings) {
+            string = string.toLowerCase();
+            string = string.replaceAll("[^a-z\u0430-\u044f]", " ");
+            String[] words = string.split(" ");
+            for (String word : words) {
+                if (word.length() < 4) continue;
+                Integer count = vocabulary.get(word);
+                if (vocabulary.get(word) == null) {
+                    vocabulary.put(word, 1);
+                } else {
+                    vocabulary.put(word, ++count);
+                }
+            }
+        }
+////////////////////////
+
+//удаление слов<10
+        for (Iterator<HashMap.Entry<String, Integer>> it = vocabulary.entrySet().iterator(); it.hasNext(); ) {
             HashMap.Entry<String, Integer> entry = it.next();
             if (entry.getValue() < 10) {
                 it.remove();
             }
         }
-        if(vocabulary.isEmpty()) throw new UnsupportedOperationException();
-        ArrayList<String> res_array= new ArrayList<>();
-        while (!vocabulary.isEmpty()){
-            HashMap.Entry<String, Integer> max=vocabulary.entrySet().iterator().next();
+        ArrayList<String> res_array = new ArrayList<>();
+        while (!vocabulary.isEmpty()) {
+            HashMap.Entry<String, Integer> max = vocabulary.entrySet().iterator().next();
             for (Map.Entry<String, Integer> pair : vocabulary.entrySet()) {
                 if (max.getValue() < pair.getValue()) {
                     max = pair;
@@ -32,30 +51,16 @@ public class WarAndPeaceExercise {
                     }
                 }
             }
-            String string=max.getKey()+ " - "+max.getValue();
+            String string = max.getKey() + " - " + max.getValue();
             res_array.add(string);
             vocabulary.remove(max.getKey());
         }
-        String res_string="";
-        for(String s:res_array) {
-            res_string+=s+"\n";
-        }
-            res_string = res_string.substring(0, res_string.length() - 1);
 
-        return res_string;
-    }
-    private static void readWords(Scanner in, HashMap<String, Integer> vocabulary) {
-        while(in.hasNext()){
-            String[] words= (in.nextLine().toLowerCase().replaceAll("[^A-Za-z\u0410-\u042f\u0430-\u044f]", " ")).split(" ");
-            for (String word:words) {
-                if(word.length()<4) continue;
-                Integer value=vocabulary.get(word);
-                if (vocabulary.get(word) == null) {
-                    vocabulary.put(word,1);
-                }else{
-                    vocabulary.put(word,++value);
-                }
-            }
+        String res_string = "";
+        for (String s : res_array) {
+            res_string += s + "\n";
         }
+        res_string = res_string.substring(0, res_string.length() - 1);
+        return res_string;
     }
 }

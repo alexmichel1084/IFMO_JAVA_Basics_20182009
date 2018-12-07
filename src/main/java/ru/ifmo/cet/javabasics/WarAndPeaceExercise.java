@@ -32,7 +32,8 @@ public class WarAndPeaceExercise {
             }
         }
         //удаление слов<10
-        for (Iterator < HashMap.Entry < String, Integer >> it = vocabulary.entrySet().iterator(); it.hasNext();) {
+        Iterator < HashMap.Entry < String, Integer >> it;
+        for (it = vocabulary.entrySet().iterator(); it.hasNext();) {
             HashMap.Entry < String, Integer > entry = it.next();
             if (entry.getValue() < 10) {
                 it.remove();

@@ -6,7 +6,15 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 public class WarAndPeaceExercise {
+    private static String write(ArrayList<String> res_array){
+        String res_string = "";
+        for (String s: res_array) {
+            res_string += s + "\n";
 
+        }
+        res_string = res_string.substring(0, res_string.length() - 1);
+        return res_string;
+    }
     public static String warAndPeace()
             throws IOException {
         final Path tome12Path = Paths.get("src", "main", "resources", "WAP12.txt");
@@ -28,8 +36,8 @@ public class WarAndPeaceExercise {
                 }
             }
         }
-
-        for (Iterator < HashMap.Entry < String, Integer >> it = vocabulary.entrySet().iterator(); it.hasNext();) {
+        Iterator < HashMap.Entry < String, Integer >> it;
+        for ( it = vocabulary.entrySet().iterator(); it.hasNext();) {
             HashMap.Entry < String, Integer > entry = it.next();
             if (entry.getValue() < 10) {
                 it.remove();
@@ -52,9 +60,9 @@ public class WarAndPeaceExercise {
 
         String res_string = "";
         for (String s: res_array) {
-            res_string += s + "\n";
-        }
-        res_string = res_string.substring(0, res_string.length() - 1);
-        return res_string;
+        res_string += s + "\n";
     }
+        return write(res_array);
+
+}
 }
